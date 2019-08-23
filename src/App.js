@@ -1,11 +1,27 @@
-import React from 'react'
+import React, { Component } from 'react'
+import TasksPage from './components/TasksPage'
 
-function App () {
-  return (
-    <div className='App'>
-      <p>Hello world</p>
-    </div>
-  )
+const mockTasks = [
+  {
+    id: 1,
+    title: 'Learn Redux',
+    description: 'The store, actions, and reducers, oh my!',
+    status: 'In Progress'
+  },
+  {
+    id: 2,
+    title: 'Peace on Earth',
+    description: 'No big deal.',
+    status: 'In Progress'
+  }
+]
+
+export default class App extends Component {
+  render () {
+    return (
+      <div className='maincontent'>
+        <TasksPage tasks={mockTasks} />
+      </div>
+    )
+  }
 }
-
-export default App
