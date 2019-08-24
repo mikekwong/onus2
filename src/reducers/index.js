@@ -17,8 +17,10 @@ const mockTasks = [
 ]
 
 export default function tasks (state = { tasks: mockTasks }, action) {
-  if (action.type === 'CREATE_TASK') {
-    return { tasks: [...state.tasks, action.payload] }
+  switch (action.type) {
+    case 'CREATE_TASK': {
+      return { tasks: [...state.tasks, action.payload] }
+    }
   }
   return state
 }
