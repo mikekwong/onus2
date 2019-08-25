@@ -4,9 +4,11 @@ import App from './App'
 import './index.css'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
+import { devToolsEnhancer } from 'redux-devtools-extension'
 import tasks from './reducers'
 
-const store = createStore(tasks)
+// devtoolsenhancer connects chrome ext with store for debugging purposes
+const store = createStore(tasks, devToolsEnhancer())
 
 ReactDOM.render(
   <Provider store={store}>
