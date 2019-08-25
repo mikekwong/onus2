@@ -4,6 +4,7 @@ export const uniqueId = () => {
   return _id++
 }
 
+// action creator
 // function signature makes it clear that title and desc are required to dispatch CREATE_TASK action
 export const createTask = ({ title, description }) => {
   return {
@@ -14,6 +15,18 @@ export const createTask = ({ title, description }) => {
       title,
       description,
       status: 'Unstarted'
+    }
+  }
+}
+
+// action creator
+// param id is which task to edit and params object are for fields being updated
+export const editTask = (id, params = {}) => {
+  return {
+    type: 'EDIT_TASK',
+    payload: {
+      id,
+      params
     }
   }
 }

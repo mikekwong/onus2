@@ -21,6 +21,19 @@ export default function tasks (state = { tasks: mockTasks }, action) {
     case 'CREATE_TASK': {
       return { tasks: [...state.tasks, action.payload] }
     }
+    case 'EDIT_TASK': {
+      const { payload } = action
+      return {
+        // Because the list of tasks is stored as an array, to update the right task iterate over the list of tasks with map, and if the current task matches the ID from the payload, update it with the new params.
+        tasks: state.tasks.map(task => {
+          if (task.id === payload.id) {
+            // Uses Object.assign to update the task object by returning a new copy, not modifying the original object
+            return Object.assign({}, task, payload.params)
+          }
+          return task
+        })
+      }
+    }
   }
   return state
 }
