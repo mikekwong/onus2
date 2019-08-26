@@ -18,10 +18,6 @@
 
 export default function tasks (state = { tasks: [] }, action) {
   switch (action.type) {
-    case 'CREATE_TASK':
-      return {
-        tasks: [...state.tasks, action.payload]
-      }
     case 'EDIT_TASK':
       const { payload } = action
       return {
@@ -43,8 +39,7 @@ export default function tasks (state = { tasks: [] }, action) {
       return {
         tasks: [...state.tasks, action.payload.task]
       }
-    default: {
+    default:
       return state
-    }
   }
 }
