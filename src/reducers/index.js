@@ -19,7 +19,9 @@
 export default function tasks (state = { tasks: [] }, action) {
   switch (action.type) {
     case 'CREATE_TASK':
-      return { tasks: [...state.tasks, action.payload] }
+      return {
+        tasks: [...state.tasks, action.payload]
+      }
     case 'EDIT_TASK':
       const { payload } = action
       return {
@@ -34,7 +36,15 @@ export default function tasks (state = { tasks: [] }, action) {
       }
     // reducer listens for server action now
     case 'FETCH_TASKS_SUCCEEDED':
-      return { tasks: action.payload.tasks }
+      return {
+        tasks: action.payload.tasks
+      }
+    case 'CREATE_TASK_SUCCEEDED':
+      return {
+        tasks: [...state.tasks, action.payload.task]
+      }
+    default: {
+      return state
+    }
   }
-  return state
 }
